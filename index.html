@@ -1,73 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page 1</title>
-    <style>
-        body,html{
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            
-        }
-        .container{
-            display: flex;
-            height: 100%;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .input_box{
-            padding: 20px;
-            margin: 20px;
-            border-radius: 20px;
-            border-color: aqua;
-            border-width: 10px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        input{
-            border-radius: 10px;
-            border-color: aqua;
-            width: 100px;
-            height: 50px;
-
-        }
-
-        button{
-            font-size: 10px;
-            width: 100px;
-            height: 50px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub User Profile Viewer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>
-        function generate(){
-            document.getElementById('input_box').hidden = true;
-            document.getElementById('qrbox').hidden = false;
-
-            // document.getElementById('qrbox').hidden = false;
-            document.getElementById('imgqr').src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+  document.getElementById('inputtext').value
-        
-        }
-    </script>
- <div class="container">
-
-    <div style="background-color: pink"  id="input_box"class="input_box" >
-        <p>QR Code generator</p>
-        <input id="inputtext" placeholder="URL Input karo"><br>
-        <button onclick="generate()">Generate QR</button>
-        <br>
-
+  <div class="container">
+    <h1>GitHub Profile Viewer</h1>
+    <div class="search-box">
+      <input type="text" id="username" placeholder="Enter GitHub username" />
+      <button id="search-btn">Search</button>
     </div>
-
-    <div style="background-color: magenta;"  id="qrbox" class="qrbox">
-            <img src="https://" id="imgqr" alt=""><br>
-    </div>  
-</div>
+    <div id="profile-container" class="hidden">
+      <img id="avatar" alt="User Avatar" />
+      <h2 id="name"></h2>
+      <p id="bio"></p>
+      <p><strong>Followers:</strong> <span id="followers"></span></p>
+      <p><strong>Following:</strong> <span id="following"></span></p>
+      <p><strong>Repositories:</strong> <span id="repos"></span></p>
+      <a id="profile-link" href="#" target="_blank">View GitHub Profile</a>
+    </div>
+    <div id="error-message" class="hidden"></div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
